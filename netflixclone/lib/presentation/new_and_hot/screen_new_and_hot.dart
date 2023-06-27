@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/colors.dart';
 import 'package:netflixclone/core/constants.dart';
-import 'package:netflixclone/presentation/main_page/widgets/custom_button_widget.dart';
 import 'package:netflixclone/presentation/new_and_hot/widgets/comming_soon.dart';
 import 'package:netflixclone/presentation/widgets/every_one_watching.dart';
-import 'package:netflixclone/presentation/widgets/video_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -72,7 +70,9 @@ class ScreenNewAndHot extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: ListView.builder(
         itemCount: 10,
-        itemBuilder: (BuildContext context, index) => const CommingSoonWidget(),
+        itemBuilder: (BuildContext context, index) => CommingSoonWidget(
+          index: index,
+        ),
       ),
     );
   }
@@ -82,11 +82,10 @@ class ScreenNewAndHot extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: ListView.builder(
         itemCount: 10,
-        itemBuilder: (BuildContext context, index) =>
-            const EveryOneWatchingWidget(),
+        itemBuilder: (BuildContext context, index) => EveryOneWatchingWidget(
+          index: index,
+        ),
       ),
     );
   }
 }
-
-

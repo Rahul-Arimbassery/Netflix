@@ -57,7 +57,7 @@ class Section2 extends StatelessWidget {
         ),
         kHeight,
         const Text(
-          'We will download a personalised selection of\nmovies and shows for you,so there"s\n always something to watch on your\ndevice',
+          'We will download a personalised selection\nof movies and shows for you,so there"s\n always something to watch on your\ndevice',
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.grey,

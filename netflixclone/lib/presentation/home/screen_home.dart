@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflixclone/core/constants.dart';
+import 'package:netflixclone/main.dart';
 import 'package:netflixclone/presentation/home/background_card.dart';
 import 'package:netflixclone/presentation/home/number_title_card.dart';
 import '../widgets/main_title_card.dart';
@@ -29,31 +30,45 @@ class ScreenHome extends StatelessWidget {
             child: Stack(
               children: [
                 ListView(
-                  children: const [
-                    BackgroundCard(),
+                  children: [
+                    const BackgroundCard(),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: MainTitleCard(title: 'Released in the past year'),
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainTitleCard(
+                        title: 'Released in the past year',
+                        array: releasedinpastyearmovies,
+                      ),
                     ),
                     kHeight,
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: MainTitleCard(title: 'Trending Now'),
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainTitleCard(
+                        title: 'Trending Now',
+                        array: trendingmovies,
+                      ),
                     ),
                     kHeight,
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: NumberTitleCard(),
+                      padding: const EdgeInsets.all(8.0),
+                      child: NumberTitleCard(
+                        array: top10tvshows,
+                      ),
                     ),
                     kHeight,
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: MainTitleCard(title: 'Tens Dramas'),
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainTitleCard(
+                        title: 'Tens Dramas',
+                        array: latestmovies,
+                      ),
                     ),
                     kHeight,
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: MainTitleCard(title: 'South Indian Cinema'),
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainTitleCard(
+                        title: 'South Indian Cinema',
+                        array: southmovies,
+                      ),
                     ),
                     kHeight,
                   ],

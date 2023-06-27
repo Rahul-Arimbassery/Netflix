@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/constants.dart';
+import 'package:netflixclone/main.dart';
 import 'package:netflixclone/presentation/search/widgets/title.dart';
 
 const imageUrl =
@@ -19,11 +20,11 @@ class SearchResultWidget extends StatelessWidget {
           child: GridView.count(
             crossAxisCount: 3,
             shrinkWrap: true,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
             childAspectRatio: 1 / 1.4,
             children: List.generate(20, (index) {
-              return const MainCard();
+              return  MainCard(index: index,);
             }),
           ),
         )
@@ -33,15 +34,18 @@ class SearchResultWidget extends StatelessWidget {
 }
 
 class MainCard extends StatelessWidget {
-  const MainCard({super.key});
+  final int index;
+  const MainCard({super.key,required this.index});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        image: const DecorationImage(
-          image: NetworkImage(imageUrl),
-          fit: BoxFit.fill,
+        image: DecorationImage(
+          image: NetworkImage(
+            'https://image.tmdb.org/t/p/w500${releasedinpastyearmovies[index]['poster_path']}',
+          ),
+          fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(7),
       ),

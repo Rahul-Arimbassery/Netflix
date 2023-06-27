@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/colors.dart';
 import 'package:netflixclone/core/constants.dart';
+import 'package:netflixclone/main.dart';
 import 'package:netflixclone/presentation/widgets/video_widget.dart';
 
 class CommingSoonWidget extends StatelessWidget {
-  const CommingSoonWidget({
-    super.key,
-  });
+  final int index;
+  const CommingSoonWidget({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CommingSoonWidget extends StatelessWidget {
       children: [
         const SizedBox(
           width: 50,
-          height: 450,
+          height: 380,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -40,57 +40,64 @@ class CommingSoonWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-            width: size.width - 50,
-            height: 450,
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                VideoWidget(),
-                kHeight,
-                Row(
-                  children: [
-                    Text(
-                      'TALL GIRL 2',
-                      style: TextStyle(
-                        fontSize: 30,
+          width: size.width - 50,
+          height: 380,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              VideoWidget(index: index, array: trendingmovies),
+              kHeight,
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      trendingmovies[index]['original_title'] ?? 'Default Name',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: const TextStyle(
+                        fontSize: 22,
                         fontStyle: FontStyle.italic,
-                        letterSpacing: -5,
                       ),
                     ),
-                    SizedBox(width: 140),
-                    Icon(
-                      Icons.notifications,
-                      color: kWhite,
-                      size: 20,
-                    ),
-                    kWidth,
-                    kWidth,
-                    kWidth,
-                    Icon(Icons.info_outline, color: kWhite, size: 20),
-                    kWidth,
-                  ],
-                ),
-                kHeight,
-                Text('Coming on Friday'),
-                kHeight,
-                Text(
-                  'Tall Girl 2',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
                   ),
-                ),
-                kHeight,
-                Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
+                  const SizedBox(width: 90),
+                  const Icon(
+                    Icons.notifications,
+                    color: kWhite,
+                    size: 20,
                   ),
+                  kWidth,
+                  kWidth,
+                  kWidth,
+                  const Icon(Icons.info_outline, color: kWhite, size: 20),
+                  kWidth,
+                ],
+              ),
+              kHeight,
+              Text(
+                trendingmovies[index]['release_date'] ?? 'Default Name',
+              ),
+              kHeight,
+              Text(
+                trendingmovies[index]['original_title'] ?? 'Default Name',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
-                kHeight,
-                
-              ],
-            )),
+              ),
+              kHeight,
+              Text(
+                trendingmovies[index]['overview'] ?? 'Default Name',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
+              ),
+              kHeight,
+            ],
+          ),
+        ),
       ],
     );
   }

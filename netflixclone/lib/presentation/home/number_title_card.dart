@@ -5,8 +5,10 @@ import 'package:netflixclone/presentation/widgets/main_title.dart';
 import '../../core/constants.dart';
 
 class NumberTitleCard extends StatelessWidget {
+  final List array;
   const NumberTitleCard({
     super.key,
+    required this.array,
   });
 
   @override
@@ -22,7 +24,10 @@ class NumberTitleCard extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: List.generate(
               10,
-              (index) => NumberCard(index:index),
+              (index) => NumberCard(
+                index: index,
+                array: array,
+              ),
             ),
           ),
         )

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/colors.dart';
+import 'package:netflixclone/main.dart';
 import 'package:netflixclone/presentation/search/widgets/title.dart';
 
 import '../../../core/constants.dart';
@@ -16,12 +17,14 @@ class SearchIdleWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SearchTextTitle(title:'Top Searches'),
+        const SearchTextTitle(title: 'Top Searches'),
         kHeight,
         Expanded(
           child: ListView.separated(
               shrinkWrap: true,
-              itemBuilder: (context, index) => const TopSearchItemTile(),
+              itemBuilder: (context, index) => TopSearchItemTile(
+                    index: index,
+                  ),
               separatorBuilder: (context, index) => kHeight20,
               itemCount: 10),
         )
@@ -31,7 +34,8 @@ class SearchIdleWidget extends StatelessWidget {
 }
 
 class TopSearchItemTile extends StatelessWidget {
-  const TopSearchItemTile({super.key});
+  final int index;
+  const TopSearchItemTile({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +45,23 @@ class TopSearchItemTile extends StatelessWidget {
         Container(
           width: screenWidth * 0.4,
           height: 75,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(imageUrl),
+              image: NetworkImage(
+                'https://image.tmdb.org/t/p/w500${releasedinpastyearmovies[index]['backdrop_path']}',
+              ),
             ),
           ),
         ),
-        const Expanded(
+        kWidth,
+        Expanded(
           child: Text(
-            'Movie Name',
-            style: TextStyle(
+            releasedinpastyearmovies[index]['title'] ?? 'Default Name',
+            style: const TextStyle(
               color: kWhite,
               fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis
             ),
           ),
         ),

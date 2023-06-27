@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/core/constants.dart';
+import 'package:netflixclone/main.dart';
 
 class VideoWidget extends StatelessWidget {
+  final int index;
+  final List array;
   const VideoWidget({
     super.key,
+    required this.index,
+    required this.array,
   });
 
   @override
@@ -14,7 +19,8 @@ class VideoWidget extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            kHotNewImage,
+            //kHotNewImage,
+            'https://image.tmdb.org/t/p/w500${array[index]['backdrop_path']}',
             fit: BoxFit.cover,
           ),
         ),
